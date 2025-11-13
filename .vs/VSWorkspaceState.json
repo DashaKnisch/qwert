@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\work3",
+    "\\work3\\www",
+    "\\work3\\www\\static"
   ],
-  "SelectedNode": "\\style.css",
+  "SelectedNode": "\\dockerfile",
   "PreviewInSolutionExplorer": false
 }
