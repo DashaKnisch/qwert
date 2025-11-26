@@ -3,18 +3,20 @@
 <head>
     <meta charset="utf-8">
     <title>Акции и скидки</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <!-- Подключаем динамический CSS, чтобы тема менялась -->
+    <link rel="stylesheet" href="/theme.php?<?= time() ?>">
 </head>
 <body>
-    <h1>Текущие акции</h1>
-    <ul>
-        <li>Скидка 10% на все мягкие игрушки</li>
-        <li>Купи 2 машинки — третья в подарок</li>
-    </ul>
     <nav>
         <a href="/index.php">Главная</a> |
         <a href="/static/info.html">О магазине</a> |
         <a href="/admin.php">Админка</a>
     </nav>
+    <h1>Текущие акции</h1>
+    <ul>
+        <li>Скидка 10% на все мягкие игрушки</li>
+        <li>Купи 2 машинки — третья в подарок</li>
+    </ul>
+
 </body>
 </html>

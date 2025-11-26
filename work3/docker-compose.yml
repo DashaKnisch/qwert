@@ -14,7 +14,14 @@ services:
       - "3307:3306"
     volumes:
       - work3_db:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - ./www/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+  redis:
+    image: redis:7
+    container_name: work5_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
 
   apache:
     build:
@@ -24,6 +31,7 @@ services:
     restart: unless-stopped
     depends_on:
       - db
+      - redis
     expose:
       - "80"
     volumes:

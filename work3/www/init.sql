@@ -8,16 +8,21 @@ FLUSH PRIVILEGES;
 
 USE appdb;
 
+
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     name VARCHAR(100) DEFAULT '',
     surname VARCHAR(100) DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- создаём пользователя admin с паролем admin
 INSERT INTO users (username, password, name, surname)
-VALUES ('admin', 'adminpass', 'Administrator', 'User');
+VALUES ('admin', 'admin', 'Administrator', 'User')
+ON DUPLICATE KEY UPDATE username=username;
+
+
 
 CREATE TABLE IF NOT EXISTS products (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -29,3 +34,10 @@ CREATE TABLE IF NOT EXISTS products (
 INSERT INTO products (name, description, price) VALUES
 ('Soft Bear', 'Cute plush bear', 9.99),
 ('Wooden Car', 'Handmade wooden car', 14.50);
+
+CREATE TABLE IF NOT EXISTS pdf_files (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    filename VARCHAR(255),
+    filedata LONGBLOB,
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;

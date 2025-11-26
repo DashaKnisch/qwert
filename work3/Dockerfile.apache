@@ -1,6 +1,9 @@
 FROM --platform=linux/amd64 php:8.2-apache
 
-RUN docker-php-ext-install pdo pdo_mysql mysqli
+RUN apt-get update && apt-get install -y \
+    libzip-dev zip unzip && docker-php-ext-install pdo pdo_mysql mysqli
+
+RUN pecl install redis && docker-php-ext-enable redis
 
 RUN a2enmod rewrite headers
 
