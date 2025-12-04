@@ -60,6 +60,7 @@ $txt = $texts[$lang];
 <body>
 <nav>
     <a href="/static/info.html">О магазине</a> |
+    <a href="/stats.php">Статистика</a> |
     <a href="/static/promo.html">Акции</a> |
     <a href="admin.php"><?= $txt['admin'] ?></a>
 </nav>

@@ -17,7 +17,6 @@ CREATE TABLE IF NOT EXISTS users (
     surname VARCHAR(100) DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- создаём пользователя admin с паролем admin
 INSERT INTO users (username, password, name, surname)
 VALUES ('admin', 'admin', 'Administrator', 'User')
 ON DUPLICATE KEY UPDATE username=username;

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Статистика магазина</title>
+    <link rel="stylesheet" href="theme.php">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        nav a { margin-right: 10px; }
+        h1 { margin-bottom: 30px; }
+        .chart-container { margin-bottom: 50px; }
+        .chart-container h2 { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/index.php">Главная</a> |
+    <a href="/static/info.html">О магазине</a> |
+    <a href="/static/promo.html">Акции</a> |
+    <a href="/admin.php">Админка</a> |
+    <a href="/stats.php">Статистика</a>
+</nav>
+
+<h1>Статистика магазина</h1>
+
+<div class="chart-container">
+    <h2>Среднее число продаж по месяцам</h2>
+    <img src="/charts/chart1.php" width="700" height="400">
+</div>
+
+<div class="chart-container">
+    <h2>Среднее количество новых клиентов по месяцам</h2>
+    <img src="/charts/chart2.php" width="700" height="400">
+</div>
+
+<div class="chart-container">
+    <h2>Средний рейтинг категорий товаров</h2>
+    <img src="/charts/chart3.php" width="700" height="400">
+</div>
+
+</body>
+</html>

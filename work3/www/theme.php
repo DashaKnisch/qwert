@@ -1,7 +1,6 @@
 <?php
 header('Content-Type: text/css; charset=utf-8');
 
-// Берём тему из cookie, если нет — light
 $theme = $_COOKIE['theme'] ?? 'light';
 
 $themes = [

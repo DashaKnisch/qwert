@@ -1,27 +1,22 @@
 <?php
-// Сессии через Redis
 ini_set('session.save_handler', 'redis');
 ini_set('session.save_path', 'tcp://redis:6379');
 session_start();
 
-// Подключение к базе
 $mysqli = new mysqli("db", "appuser", "apppass", "appdb");
 if ($mysqli->connect_error) {
     die("Ошибка подключения к БД: " . $mysqli->connect_error);
 }
 
-// Тема и язык
 $theme = $_COOKIE['theme'] ?? 'light';
 $lang  = $_COOKIE['lang'] ?? 'ru';
 
-// Тексты интерфейса
 $texts = [
     'ru'=>['home'=>'Главная','about'=>'О магазине','promo'=>'Акции','admin'=>'Админка','login_title'=>'Вход в админку','login_btn'=>'Войти','upload_pdf'=>'Загрузить PDF','uploaded_pdf'=>'Загруженные файлы PDF','logout'=>'Выйти'],
     'en'=>['home'=>'Home','about'=>'About','promo'=>'Promotions','admin'=>'Admin Panel','login_title'=>'Admin Login','login_btn'=>'Login','upload_pdf'=>'Upload PDF','uploaded_pdf'=>'Uploaded PDFs','logout'=>'Logout']
 ];
 $txt = $texts[$lang];
 
-// Выход
 if (isset($_GET['logout'])) {
     session_destroy();
     setcookie("username", "", time() - 3600, "/");
@@ -29,7 +24,6 @@ if (isset($_GET['logout'])) {
     exit;
 }
 
-// Обработка логина
 $error = '';
 if (isset($_POST['login'], $_POST['password'])) {
     $user = $_POST['login'];
@@ -53,7 +47,6 @@ if (isset($_POST['login'], $_POST['password'])) {
     }
 }
 
-// Если не залогинен, показываем форму
 if (!isset($_SESSION['user'])):
 ?>
 <!doctype html>
@@ -76,7 +69,7 @@ if (!isset($_SESSION['user'])):
 <?php exit; endif; ?>
 
 <?php
-// Обработка загрузки PDF
+
 $msg = '';
 if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_FILES['pdf_file'])) {
     if ($_FILES['pdf_file']['error']===UPLOAD_ERR_OK) {

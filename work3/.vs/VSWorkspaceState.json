@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\www",
-    "\\www\\static"
+    "\\www"
   ],
-  "SelectedNode": "\\www\\admin.php",
+  "SelectedNode": "\\Dockerfile.apache",
   "PreviewInSolutionExplorer": false
 }
