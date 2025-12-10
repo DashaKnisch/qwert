@@ -1,8 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\www"
+    "\\www",
+    "\\www\\vendor",
+    "\\www\\vendor\\amenadiel",
+    "\\www\\vendor\\composer",
+    "\\www\\vendor\\psr"
   ],
-  "SelectedNode": "\\Dockerfile.apache",
+  "SelectedNode": "\\www\\vendor\\fakerphp",
   "PreviewInSolutionExplorer": false
 }

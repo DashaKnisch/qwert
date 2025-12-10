@@ -5,14 +5,29 @@ $theme = $_COOKIE['theme'] ?? 'light';
 
 $themes = [
     'light' => [
-        'bg'=>'#ffffff','text'=>'#000','nav_bg'=>'#f0f0f0','nav_text'=>'#000','btn_bg'=>'#e0e0e0','btn_text'=>'#000'
+        'bg' => '#ffffff',
+        'text' => '#000',
+        'nav_bg' => '#f0f0f0',
+        'nav_text' => '#000',
+        'btn_bg' => '#e0e0e0',
+        'btn_text' => '#000'
     ],
     'dark' => [
-        'bg'=>'#1e1e1e','text'=>'#f0f0f0','nav_bg'=>'#2a2a2a','nav_text'=>'#fff','btn_bg'=>'#333','btn_text'=>'#fff'
+        'bg' => '#1e1e1e',
+        'text' => '#f0f0f0',
+        'nav_bg' => '#2a2a2a',
+        'nav_text' => '#fff',
+        'btn_bg' => '#333',
+        'btn_text' => '#fff'
     ],
     'colorblind' => [
-        'bg'=>'#ffffe0','text'=>'#0000ff','nav_bg'=>'#ffffc0','nav_text'=>'#0000ff','btn_bg'=>'#fffc80','btn_text'=>'#0000ff'
-    ],
+        'bg' => '#ffffe0',
+        'text' => '#0000ff',
+        'nav_bg' => '#ffffc0',
+        'nav_text' => '#0000ff',
+        'btn_bg' => '#fffc80',
+        'btn_text' => '#0000ff'
+    ]
 ];
 
 $c = $themes[$theme] ?? $themes['light'];
@@ -43,6 +58,7 @@ button {
     padding: 5px 10px;
     cursor: pointer;
 }
+
 button:hover {
     opacity: 0.8;
 }
