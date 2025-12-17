@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Исключения для статических файлов
+RewriteCond %{REQUEST_URI} ^/static/ [OR]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.*)$ - [L]
+
+# Перенаправляем все остальные запросы на index.php
+RewriteRule ^(.*)$ /index.php [L,QSA]

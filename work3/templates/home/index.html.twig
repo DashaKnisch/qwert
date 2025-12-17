@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="<?= $language ?>">
+<head>
+    <meta charset="UTF-8">
+    <title><?= $texts['store'] ?></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            <?php if ($theme == 'dark'): ?>
+                background-color: #1e1e1e;
+                color: #f0f0f0;
+            <?php elseif ($theme == 'colorblind'): ?>
+                background-color: #ffffe0;
+                color: #0000ff;
+            <?php else: ?>
+                background-color: #ffffff;
+                color: #000;
+            <?php endif; ?>
+        }
+        
+        nav {
+            <?php if ($theme == 'dark'): ?>
+                background-color: #2a2a2a;
+            <?php elseif ($theme == 'colorblind'): ?>
+                background-color: #ffffc0;
+            <?php else: ?>
+                background-color: #f0f0f0;
+            <?php endif; ?>
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        
+        nav a {
+            <?php if ($theme == 'dark'): ?>
+                color: #fff;
+            <?php elseif ($theme == 'colorblind'): ?>
+                color: #0000ff;
+            <?php else: ?>
+                color: #000;
+            <?php endif; ?>
+            text-decoration: none;
+            margin-right: 15px;
+        }
+        
+        .preferences {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .products {
+            margin-top: 30px;
+        }
+        
+        .product {
+            border: 1px solid #ddd;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        button {
+            <?php if ($theme == 'dark'): ?>
+                background-color: #333;
+                color: #fff;
+            <?php elseif ($theme == 'colorblind'): ?>
+                background-color: #fffc80;
+                color: #0000ff;
+            <?php else: ?>
+                background-color: #e0e0e0;
+                color: #000;
+            <?php endif; ?>
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        
+        button:hover {
+            opacity: 0.8;
+        }
+        
+        input, select {
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/"><?= $texts['home'] ?></a> |
+        <a href="/static/info.html"><?= $texts['about'] ?></a> |
+        <a href="/static/promo.html"><?= $texts['promo'] ?></a> |
+        <a href="/admin"><?= $texts['admin'] ?></a> |
+        <a href="/stats">Статистика</a>
+    </nav>
+
+    <h1><?= $texts['hello'] ?><?php if ($username): ?>, <?= $username ?><?php endif; ?>!</h1>
+    <h2><?= $texts['store'] ?></h2>
+
+    <div class="preferences">
+        <h3>Настройки</h3>
+        <form method="post" action="/">
+            <label><?= $texts['register_label'] ?>:</label>
+            <input type="text" name="username" value="<?= $username ?>" placeholder="<?= $texts['register_label'] ?>">
+            <br><br>
+            
+            <label><?= $texts['theme_label'] ?>:</label>
+            <select name="theme">
+                <option value="light" <?= $theme == 'light' ? 'selected' : '' ?>>Светлая</option>
+                <option value="dark" <?= $theme == 'dark' ? 'selected' : '' ?>>Темная</option>
+                <option value="colorblind" <?= $theme == 'colorblind' ? 'selected' : '' ?>>Для дальтоников</option>
+            </select>
+            <br><br>
+            
+            <label><?= $texts['lang_label'] ?>:</label>
+            <select name="language">
+                <option value="ru" <?= $language == 'ru' ? 'selected' : '' ?>>Русский</option>
+                <option value="en" <?= $language == 'en' ? 'selected' : '' ?>>English</option>
+            </select>
+            <br><br>
+            
+            <button type="submit"><?= $texts['save_btn'] ?></button>
+        </form>
+    </div>
+
+    <div class="products">
+        <h3><?= $texts['toy_list'] ?></h3>
+        <?php if (!empty($products)): ?>
+            <?php foreach ($products as $product): ?>
+                <div class="product">
+                    <strong><?= $texts['id'] ?>:</strong> <?= $product['id'] ?><br>
+                    <strong><?= $texts['name'] ?>:</strong> <?= $product['name'] ?><br>
+                    <strong><?= $texts['desc'] ?>:</strong> <?= $product['description'] ?><br>
+                    <strong><?= $texts['price'] ?>:</strong> <?= $product['price'] ?> руб.
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>Товары не найдены</p>
+        <?php endif; ?>
+    </div>
+</body>
+</html>

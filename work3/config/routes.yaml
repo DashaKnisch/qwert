@@ -1,0 +1,57 @@
+home:
+    path: /
+    controller: App\Controller\HomeController::index
+
+admin:
+    path: /admin
+    controller: App\Controller\AdminController::index
+
+admin_login:
+    path: /admin/login
+    controller: App\Controller\AdminController::login
+    methods: [POST]
+
+admin_logout:
+    path: /admin/logout
+    controller: App\Controller\AdminController::logout
+
+set_preferences:
+    path: /set_cookie
+    controller: App\Controller\HomeController::setPreferences
+    methods: [POST]
+
+# API Routes
+api_products:
+    path: /api/products
+    controller: App\Controller\ApiController::products
+    methods: [GET, POST, PUT, DELETE]
+
+api_users:
+    path: /api/users
+    controller: App\Controller\ApiController::users
+    methods: [GET, POST, PUT, DELETE]
+
+# File operations
+file_download:
+    path: /download/{id}
+    controller: App\Controller\FileController::download
+    requirements:
+        id: '\d+'
+
+# Static pages
+stats:
+    path: /stats
+    controller: App\Controller\StatsController::index
+
+# Charts
+chart1:
+    path: /charts/chart1.php
+    controller: App\Controller\ChartController::chart1
+
+chart2:
+    path: /charts/chart2.php
+    controller: App\Controller\ChartController::chart2
+
+chart3:
+    path: /charts/chart3.php
+    controller: App\Controller\ChartController::chart3

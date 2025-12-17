@@ -1,0 +1,43 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    # Symfony контроллеры
+    App\Controller\:
+        resource: '../src/Controller/'
+        tags: ['controller.service_arguments']
+
+    # Автоматическая регистрация всех классов из www/src
+    Domain\:
+        resource: '../www/src/Domain/'
+        
+    Application\:
+        resource: '../www/src/Application/'
+        
+    Infrastructure\:
+        resource: '../www/src/Infrastructure/'
+
+    # Привязка интерфейсов к реализациям
+    Domain\Repositories\ProductRepositoryInterface:
+        class: Infrastructure\Repositories\MySqlProductRepository
+        arguments:
+            $database: '@Database'
+
+    Domain\Repositories\UserRepositoryInterface:
+        class: Infrastructure\Repositories\MySqlUserRepository
+        arguments:
+            $database: '@Database'
+
+    # Сервисы инфраструктуры
+    Infrastructure\Services\SessionManager:
+        arguments:
+            $session: '@session'
+            
+    Infrastructure\Services\CookieManager:
+        arguments:
+            $requestStack: '@request_stack'
+
+    # Database connection (используем старый Database класс)
+    Database:
+        factory: ['Database', 'getInstance']

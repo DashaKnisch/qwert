@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title><?= $texts['login_title'] ?></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            {% if theme == 'dark' %}
+                background-color: #1e1e1e;
+                color: #f0f0f0;
+            {% elseif theme == 'colorblind' %}
+                background-color: #ffffe0;
+                color: #0000ff;
+            {% else %}
+                background-color: #ffffff;
+                color: #000;
+            {% endif %}
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .login-form {
+            {% if theme == 'dark' %}
+                background-color: #2a2a2a;
+            {% elseif theme == 'colorblind' %}
+                background-color: #ffffc0;
+            {% else %}
+                background-color: #f9f9f9;
+            {% endif %}
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+        
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            {% if theme == 'dark' %}
+                background-color: #333;
+                color: #fff;
+            {% elseif theme == 'colorblind' %}
+                background-color: #fffc80;
+                color: #0000ff;
+            {% else %}
+                background-color: #007bff;
+                color: white;
+            {% endif %}
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        button:hover {
+            opacity: 0.8;
+        }
+        
+        .error {
+            color: red;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .back-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .back-link a {
+            {% if theme == 'dark' %}
+                color: #fff;
+            {% elseif theme == 'colorblind' %}
+                color: #0000ff;
+            {% else %}
+                color: #007bff;
+            {% endif %}
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-form">
+        <h2><?= $texts['login_title'] ?></h2>
+        
+        <?php if (!empty($error)): ?>
+            <div class="error"><?= $error ?></div>
+        <?php endif; ?>
+        
+        <form method="post" action="/admin/login">
+            <div class="form-group">
+                <label for="login">Логин:</label>
+                <input type="text" id="login" name="login" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <button type="submit"><?= $texts['login_btn'] ?></button>
+        </form>
+        
+        <div class="back-link">
+            <a href="/">← Вернуться на главную</a>
+        </div>
+    </div>
+</body>
+</html>

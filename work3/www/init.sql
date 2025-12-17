@@ -18,8 +18,8 @@ CREATE TABLE IF NOT EXISTS users (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO users (username, password, name, surname)
-VALUES ('admin', 'admin', 'Administrator', 'User')
-ON DUPLICATE KEY UPDATE username=username;
+VALUES ('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrator', 'User')
+ON DUPLICATE KEY UPDATE password='$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';
 
 
 

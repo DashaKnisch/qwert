@@ -9,8 +9,8 @@ class ManageUserPreferencesUseCase {
         $validLanguages = ['ru', 'en'];
         
         $theme = $preferences['theme'] ?? 'light';
-        $language = $preferences['lang'] ?? 'ru';
-        $username = $preferences['user'] ?? '';
+        $language = $preferences['language'] ?? 'ru';
+        $username = $preferences['username'] ?? '';
         
         if (!in_array($theme, $validThemes)) {
             $theme = 'light';

@@ -1,9 +1,4 @@
 <?php
-require_once 'autoload.php';
-
-use Infrastructure\DI\Container;
-use InterfaceAdapters\Controllers\HomeController;
-
-$container = new Container();
-$controller = $container->get(HomeController::class);
-$controller->setPreferences();
+// Redirect to Symfony route
+header('Location: /set_cookie');
+exit;

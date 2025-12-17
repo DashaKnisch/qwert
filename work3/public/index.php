@@ -2,7 +2,7 @@
 
 // Определяем пути для Docker и локального окружения
 $isDocker = file_exists('/var/www/www/autoload.php');
-$wwwPath = $isDocker ? '/var/www/www' : __DIR__;
+$wwwPath = $isDocker ? '/var/www/www' : __DIR__ . '/../www';
 $srcPath = $isDocker ? '/var/www/src' : __DIR__ . '/../src';
 $templatesPath = $isDocker ? '/var/www/templates' : __DIR__ . '/../templates';
 
@@ -142,6 +142,13 @@ try {
             break;
             
         default:
+            // Проверяем маршрут для скачивания файлов
+            if (preg_match('/^\/download\/(\d+)$/', $path, $matches)) {
+                $controller = new \App\Controller\FileController();
+                $response = $controller->download((int)$matches[1]);
+                break;
+            }
+            
             // Проверяем, есть ли файл в www
             $filePath = $wwwPath . $path;
             if (file_exists($filePath) && is_file($filePath)) {

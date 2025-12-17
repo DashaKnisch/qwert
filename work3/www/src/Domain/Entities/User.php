@@ -15,8 +15,6 @@ class User {
         $this->password = $password;
         $this->name = $name;
         $this->surname = $surname;
-        
-        $this->validateUsername($username);
     }
     
     public function getId() {
@@ -27,6 +25,10 @@ class User {
         return $this->username;
     }
     
+    public function getPassword() {
+        return $this->password;
+    }
+    
     public function getName() {
         return $this->name;
     }
@@ -35,23 +37,19 @@ class User {
         return $this->surname;
     }
     
-    public function getFullName() {
-        return trim($this->name . ' ' . $this->surname);
-    }
-    
-    public function verifyPassword($password) {
-        return $this->password === $password;
-    }
-    
     public function updateProfile($name, $surname) {
         $this->name = $name;
         $this->surname = $surname;
     }
     
-    private function validateUsername($username) {
-        if (empty($username) || strlen($username) < 3) {
-            throw new \InvalidArgumentException("Username must be at least 3 characters");
+    public function verifyPassword($password) {
+        // Сначала пробуем хешированный пароль
+        if (password_verify($password, $this->password)) {
+            return true;
         }
+        
+        // Если не работает, проверяем обычный текст (для совместимости)
+        return $password === $this->password;
     }
     
     public function toArray($includePassword = false) {
